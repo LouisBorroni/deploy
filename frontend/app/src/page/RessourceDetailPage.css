@@ -1,0 +1,27 @@
+.ressource-container {
+    width: auto;
+    height: 100%;
+    margin: 32px;
+    padding: 0 32px; 
+    text-align: left; 
+  }
+  
+  .ressource-container p {
+    margin-top: 16px; 
+    margin-bottom: 16px; 
+  }
+  
+  .ressource-title {
+    margin-top: 32px; 
+    text-align: center; 
+    color: var(--primary-color);
+  }
+
+  .video-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 16px; 
+  }
+  
+  

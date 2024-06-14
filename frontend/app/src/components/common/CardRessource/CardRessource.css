@@ -1,0 +1,48 @@
+@import url("../../../common/variables/variables.css");
+.card-ressource{    
+    border-radius: var(--default-radius);
+    border: 1px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-medium);
+    gap: var(--spacing-medium);
+    .card-ressource-header{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        .ressource-title{
+            color: var(--primary-color);
+            margin: none;
+            font-size: var(--heading-font-size);
+            font-weight: var(--bold-font);
+        }
+    }
+    .card-ressource-footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .ressource-stats{
+            display: flex;
+            flex-direction: row;
+            gap: var(--spacing-medium);
+
+            .ressource-views{
+                display: flex;
+                flex-direction: row;
+                gap: var(--spacing-small);
+                color: var(--primary-color);
+                align-items: center;
+            }
+            .ressource-likes{
+                display: flex;
+                flex-direction: row;
+                gap: var(--spacing-small);
+                align-items: center;
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+p {
+    margin: 0;
+}

@@ -1,0 +1,33 @@
+/* variables.css */
+
+:root {
+    /* Couleurs */
+    --primary-color: #03989E;
+    --secondary-color: #00c8cf;
+    --primary-white:  #F0F0F0;
+    --secondary-color: #FF5733;
+   
+  
+    /* Tailles de police */
+    --base-font-size: 16px;
+    --heading-font-size: 24px;
+    
+    /* force des polices */
+
+    --bold-font: 500;
+  
+    /* Marges et espacements */
+    --normal-gap: 16px;
+
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+
+    --padding-small: 8px;
+    --padding-medium: 16px;
+
+    /* radius */
+
+    --default-radius: 8px;
+  }
+  

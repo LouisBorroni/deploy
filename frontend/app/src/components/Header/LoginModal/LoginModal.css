@@ -1,0 +1,94 @@
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    height:auto;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    .modal-type-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 16px;
+        margin: 16px 0 16px 0;
+    }
+    .modal-header{
+        display: flex;
+        justify-content: flex-end;
+        .close-btn{
+            height: 34px;
+            width: 34px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 16px 16px 0 0;
+            .icon{
+                height: 24px;
+                color: white;
+            }
+        }
+    }
+    .form-content{
+        display: flex;
+        flex-direction: column;
+        margin: 16px;
+        gap: 32px;
+        .form-header{
+            justify-content: flex-start;
+            .form-title{
+                display: flex;
+                color: var(--primary-color);
+                height: 24px;
+                margin: 0;
+                align-items: center;
+            }
+        }
+        .logIn-form{
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .signIn-form{
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .form-inputs{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            .input-content{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                .input-span{
+                    display: flex;
+                    justify-content: flex-start;
+                }
+            }
+        }
+
+    }
+    .error-message{
+        color: red;
+    }
+  }
+  

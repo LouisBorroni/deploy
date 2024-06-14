@@ -1,0 +1,29 @@
+@import url("../../common/variables/variables.css");
+.left-side {
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid var(--primary-color);
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  
+  .left-side-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .user-actions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 16px;
+    }
+    .moderation {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 16px;
+    }
+  }
+  
+  /* Ajoutez d'autres styles selon vos besoins */
+  

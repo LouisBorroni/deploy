@@ -1,0 +1,24 @@
+@import url("../../../common/variables/variables.css");
+.custom-input{
+    display: flex;
+    height: 34px;
+    border-radius: 8px;
+    border: none;
+    align-items: center;
+    background-color: var(--primary-white);
+    .input{
+        padding: 0;
+        width: 400px;
+        height: 100%;
+        border-radius: none;
+        border: none;
+        background: transparent;
+        &:focus{
+            outline:none;
+        }
+    }
+    .icon{
+        margin: 0 8px 0 8px;
+        color: var(--primary-color);
+    }
+}
