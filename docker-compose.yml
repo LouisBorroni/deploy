@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+
+  database:
+    image: mysql:5.7
+    container_name: app_database
+    restart: always
+    ports:
+      - "8383:3306"
+    volumes:
+      - ./docker/data/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_db_user
+      MYSQL_PASSWORD: app_db_password
+
+  backend:
+    build:
+      context: ./backend
+    container_name: api_apache
+    extra_hosts:
+     - "api.local:127.0.0.1"
+    hostname: api.local
+    domainname: local
+    volumes:
+      - ./backend/api:/var/www/html/api
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - database  # Modifier la dépendance de mysql à database
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: database  # Utiliser le nom du service défini dans Docker Compose
+      DB_PORT: 3306
+      DB_DATABASE: app_db
+      DB_USERNAME: app_db_user
+      DB_PASSWORD: app_db_password
+
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend/app:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: app_phpmyadmin
+    ports:
+      - "8585:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_db_user
+      MYSQL_PASSWORD: app_db_password
+    depends_on:
+      - database
+    restart: always
+
+  maildev:
+    image: djfarrelly/maildev
+    container_name: app_maildev
+    ports:
+      - "8787:80"
+    restart: always
+    extra_hosts:
+      - "mail.local:127.0.0.1"
+    hostname: mail.local
+    domainname: local
+
+volumes:
+  db-data: {}  # Vous pouvez ajouter d'autres configurations de volumes si nécessaire
