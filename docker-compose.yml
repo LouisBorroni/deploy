@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   database:
     image: mysql:5.7
     container_name: app_database
@@ -30,10 +29,10 @@ services:
       - 80:80
       - 443:443
     depends_on:
-      - database  # Modifier la dépendance de mysql à database
+      - database
     environment:
       DB_CONNECTION: mysql
-      DB_HOST: database  # Utiliser le nom du service défini dans Docker Compose
+      DB_HOST: database
       DB_PORT: 3306
       DB_DATABASE: app_db
       DB_USERNAME: app_db_user
@@ -44,8 +43,10 @@ services:
       context: ./frontend
     volumes:
       - ./frontend/app:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
+    command: sh -c "npm install && npm start"
     depends_on:
       - backend
 
@@ -77,4 +78,4 @@ services:
     domainname: local
 
 volumes:
-  db-data: {}  # Vous pouvez ajouter d'autres configurations de volumes si nécessaire
+  db-data: {}

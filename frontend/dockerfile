@@ -1,5 +1,5 @@
 # Utiliser l'image Node.js 20.11
-FROM node:20.11.0
+FROM node:20.11.0 AS build
 
 # Configurer le répertoire de travail
 WORKDIR /usr/src/app
@@ -10,14 +10,15 @@ COPY ./app .
 # Installer les dépendances de l'application
 RUN npm install
 
-# Fix les permissions (optionnel)
-RUN chmod -R 755 /usr/src/app
-
-# Installer react-scripts
-RUN npm install react-scripts --save
-
 # Construire l'application React
 RUN npm run build
+
+# Étape de production
+FROM node:20.11.0 AS production
+
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/build ./build
 
 # Installer serve pour servir l'application
 RUN npm install -g serve
