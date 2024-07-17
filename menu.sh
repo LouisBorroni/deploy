@@ -2,7 +2,7 @@
 
 docker_initilized=false
 
-while true do 
+while true; do 
     echo "Veuilez choisir une option :"
     echo "1) Start les containers docker"
     echo "2) Build & Run Docker"
@@ -13,7 +13,7 @@ while true do
 
     if [ "$choix" -eq 1 ]; then
         echo "Vous avez choisi de démarrer les containers docker ! "
-        docker-compose up
+        docker-compose up -d
         docker_initilized=true
         read -p "Appuyer sur Entrée pour continuer..."
     elif [ "$choix" -eq 2 ]; then
