@@ -1,5 +1,5 @@
 # Utiliser l'image Node.js 20.11
-FROM node:20.11.0
+FROM node:20.11.0 AS build
 
 # Configurer le répertoire de travail
 WORKDIR /usr/src/app
@@ -12,6 +12,13 @@ RUN npm install
 
 # Construire l'application React
 RUN npm run build
+
+# Étape de production
+FROM node:20.11.0 AS production
+
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/build ./build
 
 # Installer serve pour servir l'application
 RUN npm install -g serve
