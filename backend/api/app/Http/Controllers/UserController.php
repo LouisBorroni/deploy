@@ -18,17 +18,23 @@ class UserController extends Controller
 
     public function logIn(Request $request)
     {
-        $email = $request->input('Email_User');
-        $password = $request->input('Password_User');
-
+        $validatedData = $request->validate([
+            'Email_User' => 'required|email',
+            'Password_User' => 'required|string|min:6',
+        ]);
+    
+        $email = $validatedData['Email_User'];
+        $password = $validatedData['Password_User'];
+    
         $user = $this->userService->login($email, $password);
-
+    
         if ($user) {
             return response()->json(['message' => 'Login successful', 'user' => $user]);
         } else {
             return response()->json(['message' => 'Invalid informations'], 401);
         }
     }
+    
 
 
     public function signIn(Request $request)

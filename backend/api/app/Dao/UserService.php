@@ -10,22 +10,23 @@ class UserService
 {
     public function login($email, $password)
     {
-        // Récupérez l'utilisateur par e-mail
+        // Récupérez l'utilisateur par e-mail de manière sécurisée
         $user = User::where('Email_User', $email)->first();
-
+    
         // Vérifie si l'utilisateur existe et si le mot de passe haché correspond au mot de passe stocké
         if ($user && Hash::check($password, $user->Password_User)) {
             $token = $this->generateToken(); // Générer un jeton d'authentification
             $user->Token_User = hash('sha256', $token);
             $user->save();
-
+    
             return [
                 'user' => $this->removePasswordField($user),
             ];
         }
-
+    
         return null;
     }
+    
 
     public function createUser(array $userData)
     {

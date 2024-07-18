@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, setIsLoggedIn, userInfo, up
 
     return (
         <nav className="navbar">
-            <h1 className="navbar-title">Ressources Relationnelles</h1>
+            <h1 className="navbar-title">Titre à modifier</h1>
             <ul className="nav-list">
                 {isLoggedIn ? (
                     <>
